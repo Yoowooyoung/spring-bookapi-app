@@ -1,4 +1,4 @@
-package com.example.spring_bookapi_app.controller; // 1. 경로 전체를 다 적어야 함
+package com.example.spring_bookapi_app.controller;
 
 import com.example.spring_bookapi_app.entity.Book; 
 import com.example.spring_bookapi_app.service.BookService;
@@ -15,27 +15,27 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/books")
+    @GetMapping("/books")        // 전체 도서 목록 조회
     public List<Book> getAllBooks() {
         return bookService.findAllBooks();
     }
 
-    @GetMapping("/books/{id}")
+    @GetMapping("/books/{id}")        // 특정 도서 조회
     public Book getBookById(@PathVariable Long id) {
         return bookService.findById(id);
     }
 
-    @PostMapping("/books")
+    @PostMapping("/books")        // 도서 추가
     public Book postBooks(@RequestBody Book requestBook) {
         return bookService.save(requestBook);
     }
 
-    @PutMapping("/books/{id}") // 앞에 / 추가했습니다.
+    @PutMapping("/books/{id}")        // 도서 정보 수정
     public Book putBook(@PathVariable Long id, @RequestBody Book requestBook) {
         return bookService.putById(id, requestBook);
     }
 
-    @DeleteMapping("/books/{id}")
+    @DeleteMapping("/books/{id}")        // 도서 삭제
     public Book deleteBook(@PathVariable Long id) {
         return bookService.deleteById(id);
     }
